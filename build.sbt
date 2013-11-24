@@ -1,4 +1,4 @@
-name := "game-of-life"
+name := "life"
 
 organization := "com.loopfor.life"
 
@@ -14,6 +14,6 @@ scalacOptions ++= Seq(
 )
 
 javacOptions ++= Seq(
-  "-source", "1.6",
-  "-target", "1.6"
+  "-source", "1.7",
+  "-target", "1.7"
 )

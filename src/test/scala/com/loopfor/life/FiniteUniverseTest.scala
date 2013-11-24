@@ -1,11 +1,20 @@
 package com.loopfor.life
 
+import scala.annotation.tailrec
+
 object FiniteUniverseTest {
   def main(args: Array[String]): Unit = {
-    val u = FiniteUniverse(100, 100, 500)
-    (u /: (0 until 32)) { case (u, gen) =>
-      println(s"gen $gen: alive: ${u.alive.size}, died: ${u.died.size}, born: ${u.born.size}")
-      u.tick
+    val xscale = args(0).toInt
+    val yscale = args(1).toInt
+    val initial = args(2).toInt
+    val delay = args(3).toInt
+    val cycles = args(4).toInt
+    val display = new Display(xscale, yscale)
+    @tailrec def run(u: Universe): Unit = {
+      display render u
+      Thread sleep delay
+      if (u.generation < cycles) run(u.tick)
     }
+    run(FiniteUniverse(xscale, yscale, initial))
   }
 }
