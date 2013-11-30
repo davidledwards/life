@@ -9,7 +9,7 @@ object FiniteUniverseTest {
     val initial = args(2).toInt
     val delay = args(3).toInt
     val cycles = args(4).toInt
-    val display = new Display(xscale, yscale)
+    val display = FancyDisplay(xscale, yscale)
     @tailrec def run(u: Universe): Unit = {
       display render u
       Thread sleep delay
